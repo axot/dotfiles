@@ -1,0 +1,12 @@
+# axot zsh config - bsd
+#
+
+OPT='/usr'
+
+# Alias
+alias l='ls -lwGhF'
+alias ll='ls -alwGhF'
+
+# Exports
+export LSCOLORS=gxfxcxdxbxegedabagacad
+

@@ -1,0 +1,33 @@
+# axot zsh config - osx
+#
+
+# homebrew
+OPT='/usr'
+
+function brewrmdeps()
+{
+    brew rm $1
+    brew rm $(join <(brew leaves) <(brew deps $1))
+}
+
+# Exports
+export GNUTERM=x11
+export MANPATH=$MANPATH:$OPT/local/man
+export LSCOLORS=gxfxcxdxbxegedabagacad
+export PATH=/usr/texbin:$HOME/bin:$HOME/.rvm/bin:$OPT/local/bin:$OPT/local/sbin:$OPT/bin:$OPT/sbin:/bin:/sbin
+export PYTHONPATH=/usr/local/lib/python2.7/site-packages:/usr/local/lib
+
+# Alias
+alias l='ls -lwGhF'
+alias ll='ls -alwGhF'
+alias o=open
+alias pipupgrade="pip freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs pip install -U"
+
+zstyle ':completion:*' list-colors $LSCOLORS
+
+## Load Autojump
+[[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
+
+## Load Autoenv
+[[ -s /usr/local/opt/autoenv/activate.sh ]] && . /usr/local/opt/autoenv/activate.sh
+
