@@ -12,8 +12,6 @@ echo Loading zsh ...
 
 loadsubconf zshrc.const
 
-# Common Settings
-
 # VI keymap
 bindkey -v
 bindkey '^R' history-incremental-search-backward
@@ -25,15 +23,14 @@ bindkey '^K' kill-line
 bindkey '^P' up-history
 bindkey '^N' down-history
 
-## Alias
+# Alias
 alias reload='source ~/.zshrc'
 alias ipython='ipython --pylab'
 
-## Extension Alias
+# Extension Alias
 alias -s tgz='tar -zxvf'
 
-
-## Z Shell Configs
+# Options
 autoload -U compinit  
 compinit 
 
