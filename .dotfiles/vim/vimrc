@@ -49,7 +49,7 @@ if v:version > 702
   set norelativenumber            " It is much faster
   set undofile
   set undoreload=10000
-" set colorcolumn=+1
+  set colorcolumn=+1
 endif
 
 " Don't try to highlight lines longer than 800 characters.
@@ -763,6 +763,14 @@ augroup END
 
 " }}}
 " Plugin settings --------------------------------------------------------- {{{
+
+" Taglist {{{
+
+let Tlist_Ctags_Cmd='/usr/local/bin/ctags'
+let Tlist_Auto_Open=1
+let Tlist_WinWidth=45
+
+"}}}
 
 " Ack {{{
 
