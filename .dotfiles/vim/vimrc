@@ -767,7 +767,7 @@ augroup END
 " Taglist {{{
 
 let Tlist_Ctags_Cmd='/usr/local/bin/ctags'
-let Tlist_Auto_Open=1
+let Tlist_Auto_Open=0
 let Tlist_WinWidth=45
 
 "}}}
