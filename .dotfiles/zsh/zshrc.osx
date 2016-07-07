@@ -15,7 +15,6 @@ export GNUTERM=x11
 export MANPATH=$MANPATH:$OPT/local/man
 export LSCOLORS=gxfxcxdxbxegedabagacad
 export PATH=/usr/texbin:$HOME/bin:$HOME/.rvm/bin:$OPT/local/bin:$OPT/local/sbin:$OPT/bin:$OPT/sbin:/bin:/sbin
-export PYTHONPATH=/usr/local/lib/python2.7/site-packages:/usr/local/lib
 
 # Alias
 alias l='ls -lwGhF'

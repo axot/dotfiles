@@ -761,6 +761,16 @@ augroup END
 " }}}
 
 " }}}
+" Yaml {{{
+
+augroup ft_yaml
+    au!
+    au BufNewFile,BufRead *.yml setlocal filetype=yaml
+    au FileType yaml setlocal sw=2 ts=2 sts=2 et
+augroup END
+
+" }}}
+" }}}
 " Plugin settings --------------------------------------------------------- {{{
 
 " Taglist {{{

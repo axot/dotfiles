@@ -25,9 +25,6 @@ done
 
 source "$DOTFILES/bash/prompt_minimalist"
 
-# This loads RVM into a shell session.
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-
 bind -f $DOTFILES/bash/bash_bindings
 
 # check the window size after each command and, if necessary,
@@ -63,3 +60,5 @@ complete -o default -o nospace -F _git g
 export iOSOpenDevPath=/opt/iOSOpenDev
 export iOSOpenDevDevice=
 export PATH=/opt/iOSOpenDev/bin:$PATH
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
