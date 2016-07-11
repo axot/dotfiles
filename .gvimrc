@@ -1,1 +1,1 @@
-set gfn=Ricty:h18
+set gfn=Ricty:h14
