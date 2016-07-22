@@ -8,6 +8,8 @@ Plug 'easymotion/vim-easymotion'
 Plug 'majutsushi/tagbar'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'Valloric/YouCompleteMe'
 call plug#end()
 
 " Theme
@@ -18,10 +20,12 @@ let mapleader = ","
 inoremap jj <Esc>
 inoremap <C-e> <Esc>A
 inoremap <C-a> <Esc>I
+vmap <C-c> :w !pbcopy<CR><CR>
 
 " Basic Config
 set number
 set sw=2 ts=2 sts=2 et
+set nowrap
 
 " NerdTree
 noremap  <leader>n :NERDTreeToggle<cr>
@@ -32,4 +36,3 @@ nmap <leader>t :TagbarToggle<CR>
 
 let g:fzf_files_options =
   \ '--preview "(coderay {} || cat {}) 2> /dev/null | head -'.&lines.'"'
-

@@ -78,9 +78,7 @@ export LC_ALL=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 export PAGER=less
 export EDITOR=vim
-#export LIBRARY_PATH=$OPT/local/lib:/usr/lib:$LIBRARY_PATH
-#export C_INCLUDE_PATH=$OPT/local/include:/usr/include:$C_INCLUDE_PATH
-#export CPLUS_INCLUDE_PATH=$OPT/local/include:/usr/include:$CPLUS_INCLUDE_PATH
+export XDG_CONFIG_HOME=$HOME/.config
 
 # load RVM function
 [[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
@@ -89,11 +87,5 @@ echo ZSH config $VER was loaded, enjoy it.
 
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-
-# The next line updates PATH for the Google Cloud SDK.
-source '/Users/axot/google-cloud-sdk/path.zsh.inc'
-
-# The next line enables shell command completion for gcloud.
-#source '/Users/axot/google-cloud-sdk/completion.zsh.inc'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
