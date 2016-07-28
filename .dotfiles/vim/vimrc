@@ -11,6 +11,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'Valloric/YouCompleteMe'
 Plug 'w0ng/vim-hybrid'
+Plug 'jiangmiao/auto-pairs'
 call plug#end()
 
 " Theme
@@ -31,6 +32,7 @@ vmap <C-c> :w !pbcopy<CR><CR>
 set number
 set sw=2 ts=2 sts=2 et
 set nowrap
+set cursorline
 
 " NerdTree
 noremap  <leader>n :NERDTreeToggle<cr>
