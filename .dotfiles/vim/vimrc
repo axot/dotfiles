@@ -32,6 +32,7 @@ inoremap <C-a> <Esc>I
 nnoremap <C-n> :bnext<CR>
 nnoremap <C-p> :bprevious<CR>
 vmap <C-c> :w !pbcopy<CR><CR>
+nnoremap ZQ :qa<CR>
 
 " Basic Config
 set number
@@ -41,6 +42,9 @@ set cursorline
 set ignorecase
 set smartcase
 set showmatch
+
+" Performance
+set lazyredraw
 
 " NerdTree
 noremap  <leader>n :NERDTreeToggle<cr>
