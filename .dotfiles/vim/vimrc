@@ -2,7 +2,7 @@
 call plug#begin('~/.vim/bundle')
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'scrooloose/nerdcommenter'
-Plug 'craigemery/vim-autotag'
+Plug 'szw/vim-tags'
 Plug 'tpope/vim-sleuth'
 Plug 'easymotion/vim-easymotion'
 Plug 'majutsushi/tagbar'
