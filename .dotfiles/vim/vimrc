@@ -12,6 +12,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'Valloric/YouCompleteMe'
 Plug 'w0ng/vim-hybrid'
 Plug 'jiangmiao/auto-pairs'
+Plug 'haya14busa/incsearch.vim'
 call plug#end()
 
 " Theme
@@ -33,6 +34,9 @@ set number
 set sw=2 ts=2 sts=2 et
 set nowrap
 set cursorline
+set ignorecase
+set smartcase
+set showmatch
 
 " NerdTree
 noremap  <leader>n :NERDTreeToggle<cr>
@@ -41,5 +45,11 @@ inoremap <leader>n <esc>:NERDTreeToggle<cr>
 " Tagbar
 nmap <leader>t :TagbarToggle<CR>
 
+" fzf
 let g:fzf_files_options =
   \ '--preview "(coderay {} || cat {}) 2> /dev/null | head -'.&lines.'"'
+
+" incsearch
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
