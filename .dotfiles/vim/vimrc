@@ -43,6 +43,7 @@ set cursorline
 set ignorecase
 set smartcase
 set showmatch
+set hidden
 
 " Performance
 set lazyredraw
