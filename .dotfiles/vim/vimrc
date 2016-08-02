@@ -46,6 +46,9 @@ set smartcase
 set showmatch
 set hidden
 
+" for crontab
+set backupskip=/tmp/*,/private/tmp/*
+
 " Performance
 set lazyredraw
 
