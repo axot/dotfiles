@@ -59,6 +59,7 @@ inoremap <leader>n <esc>:NERDTreeToggle<cr>
 nmap <leader>t :TagbarToggle<CR>
 
 " fzf
+autocmd! VimEnter * command! -nargs=* -complete=file Ag :call fzf#vim#ag_raw(<q-args>)
 let g:fzf_files_options=
   \ '--preview "(coderay {} || cat {}) 2> /dev/null | head -'.&lines.'"'
 
@@ -110,7 +111,4 @@ nmap <Leader>L <Plug>(easymotion-overwin-line)
 " Move to word
 map  <Leader>w <Plug>(easymotion-bd-w)
 nmap <Leader>w <Plug>(easymotion-overwin-w)
-
-" fzf
-autocmd! VimEnter * command! -nargs=* -complete=file Ag :call fzf#vim#ag_raw(<q-args>)
 
