@@ -85,7 +85,6 @@ export XDG_CONFIG_HOME=$HOME/.config
 
 echo ZSH config $VER was loaded, enjoy it.
 
-
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
