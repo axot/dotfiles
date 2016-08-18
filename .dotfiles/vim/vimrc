@@ -66,7 +66,6 @@ nmap <leader>t :TagbarToggle<CR>
 autocmd! VimEnter * command! -nargs=* -complete=file Ag :call fzf#vim#ag_raw(<q-args>)
 let g:fzf_files_options=
   \ '--preview "(coderay {} || cat {}) 2> /dev/null | head -'.&lines.'"'
-let g:fzf_layout = { 'up': '~40%' }
 
 " airline
 let g:airline_theme='bubblegum'
