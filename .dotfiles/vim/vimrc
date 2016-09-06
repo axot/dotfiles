@@ -1,4 +1,3 @@
-"flow.request.path.replace('/', '_')  Vim-Plug
 call plug#begin('~/.vim/bundle')
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'scrooloose/nerdcommenter'
@@ -17,6 +16,7 @@ Plug 'haya14busa/incsearch-easymotion.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ntpeters/vim-better-whitespace'
+Plug 'moll/vim-bbye'
 call plug#end()
 
 " Theme
@@ -36,6 +36,8 @@ nnoremap <C-p> :bprevious<CR>
 nnoremap <C-]> g<C-]>
 vmap <C-c> :w !pbcopy<CR><CR>
 nnoremap ZQ :qa<CR>
+" vim-bbye
+nnoremap <Leader>q :Bdelete<CR>
 
 " Basic Config
 set number
@@ -118,3 +120,4 @@ nmap <Leader>w <Plug>(easymotion-overwin-w)
 
 " Fugitive
 autocmd QuickFixCmdPost *grep* cwindow
+
