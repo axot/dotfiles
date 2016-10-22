@@ -17,6 +17,9 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'moll/vim-bbye'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'"
+Plug 'ervandew/supertab'
 call plug#end()
 
 " Theme
@@ -35,7 +38,7 @@ nnoremap <C-n> :bnext<CR>
 nnoremap <C-p> :bprevious<CR>
 nnoremap <C-]> g<C-]>
 vmap <C-c> :w !pbcopy<CR><CR>
-nnoremap ZQ :qa<CR>
+nnoremap ZQ :qa!<CR>
 " vim-bbye
 nnoremap <Leader>q :Bdelete<CR>
 
@@ -65,9 +68,6 @@ inoremap <leader>n <esc>:NERDTreeToggle<cr>
 nmap <leader>t :TagbarToggle<CR>
 
 " fzf
-autocmd! VimEnter * command! -nargs=* -complete=file Ag :call fzf#vim#ag_raw(<q-args>, fzf#wrap('ag-raw',
-\ {'options': "--preview 'coderay $(cut -d: -f1 <<< {}) 2> /dev/null | sed -n $(cut -d: -f2 <<< {}),\\$p | head -".&lines."'"}))
-
 let g:fzf_files_options=
   \ '--preview "(coderay {} || cat {}) 2> /dev/null | head -'.&lines.'"'
 
@@ -122,4 +122,14 @@ nmap <Leader>w <Plug>(easymotion-overwin-w)
 
 " Fugitive
 autocmd QuickFixCmdPost *grep* cwindow
+
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
