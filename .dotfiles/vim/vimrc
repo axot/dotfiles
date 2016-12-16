@@ -8,9 +8,8 @@ Plug 'majutsushi/tagbar'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
-Plug 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe', { 'dir': '~/.vim/bundle/YouCompleteMe', 'do': './install.py --clang-completer --omnisharp-completer --tern-completer' }
 Plug 'w0ng/vim-hybrid'
-Plug 'jiangmiao/auto-pairs'
 Plug 'haya14busa/incsearch.vim'
 Plug 'haya14busa/incsearch-easymotion.vim'
 Plug 'vim-airline/vim-airline'
@@ -20,6 +19,7 @@ Plug 'moll/vim-bbye'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'"
 Plug 'ervandew/supertab'
+Plug 'vim-scripts/bats.vim'
 call plug#end()
 
 " Theme
