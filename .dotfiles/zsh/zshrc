@@ -31,14 +31,19 @@ alias ipython='ipython --pylab'
 alias -s tgz='tar -zxvf'
 
 # Options
-autoload -U compinit  
+autoload -U compinit
 compinit -u
 
 zstyle ':completion:*:default' menu select true
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 
-autoload -U promptinit  
-promptinit  
-prompt adam2 cyan green magenta
+autoload -U promptinit
+promptinit
+#prompt adam2 cyan green magenta
+
+# npm install --global pure-prompt
+prompt pure
+
 zmodload -i zsh/mathfunc
 
 HISTFILE=$DOTZSHDIR/zhistory
