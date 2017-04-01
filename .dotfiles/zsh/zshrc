@@ -1,4 +1,11 @@
-# axot zsh config file - common
+#
+# User configuration sourced by interactive shells
+#
+
+# Source zim
+if [[ -s ${ZDOTDIR:-${HOME}}/.zim/init.zsh ]]; then
+  source ${ZDOTDIR:-${HOME}}/.zim/init.zsh
+fi
 
 VER="140327"
 DOTZSHDIR="$HOME/.dotfiles/zsh"
@@ -37,12 +44,9 @@ compinit -u
 zstyle ':completion:*:default' menu select true
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 
-autoload -U promptinit
-promptinit
+#autoload -U promptinit
+#promptinit
 #prompt adam2 cyan green magenta
-
-# npm install --global pure-prompt
-prompt pure
 
 zmodload -i zsh/mathfunc
 
@@ -93,3 +97,4 @@ echo ZSH config $VER was loaded, enjoy it.
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+

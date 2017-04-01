@@ -5,3 +5,6 @@
 !.dotfiles
 */*
 !.dotfiles/*
+.dotfiles/zsh/zhistory
+.dotfiles/zsh/zshrc.local
+.dotfiles/zsh/zshrc.private
