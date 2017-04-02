@@ -8,7 +8,6 @@ Plug 'majutsushi/tagbar'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
-Plug 'Valloric/YouCompleteMe', { 'dir': '~/.vim/bundle/YouCompleteMe', 'do': './install.py --clang-completer --omnisharp-completer --tern-completer' }
 Plug 'w0ng/vim-hybrid'
 Plug 'haya14busa/incsearch.vim'
 Plug 'haya14busa/incsearch-fuzzy.vim'
@@ -17,10 +16,15 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'moll/vim-bbye'
-Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'"
 Plug 'ervandew/supertab'
 Plug 'vim-scripts/bats.vim'
+
+if has('nvim')
+  Plug 'Valloric/YouCompleteMe', { 'dir': '~/.vim/bundle/YouCompleteMe', 'do': './install.py --clang-completer --omnisharp-completer --tern-completer' }
+  Plug 'SirVer/ultisnips'
+endif
+
 call plug#end()
 
 " Theme

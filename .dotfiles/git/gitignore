@@ -8,3 +8,4 @@
 .dotfiles/zsh/zhistory
 .dotfiles/zsh/zshrc.local
 .dotfiles/zsh/zshrc.private
+.dotfiles/vim/bundle
