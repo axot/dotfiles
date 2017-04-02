@@ -17,8 +17,6 @@ export LSCOLORS=gxfxcxdxbxegedabagacad
 export PATH=/usr/texbin:$HOME/bin:$HOME/.rvm/bin:$OPT/local/bin:$OPT/local/sbin:$OPT/bin:$OPT/sbin:/bin:/sbin
 
 # Alias
-alias l='ls -lwGhF'
-alias ll='ls -alwGhF'
 alias o=open
 alias pipupgrade="pip freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs pip install -U"
 
