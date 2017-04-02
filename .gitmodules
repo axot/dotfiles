@@ -1,0 +1,3 @@
+[submodule ".dotfiles/zim"]
+	path = .dotfiles/zim
+	url = https://github.com/Eriner/zim.git
