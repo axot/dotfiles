@@ -46,6 +46,8 @@ vmap <C-c> :w !pbcopy<CR><CR>
 nnoremap ZQ :qa!<CR>
 " vim-bbye
 nnoremap <Leader>q :Bdelete<CR>
+"This unsets the "last search pattern" register by hitting return
+nnoremap <ESC> :noh<CR><CR>
 
 " Basic Config
 set number
