@@ -1,3 +1,9 @@
+" use python3
+let python3_path=$HOME . '/.pyenv/versions/neovim/bin/python'
+if filereadable(python3_path)
+    let g:python3_host_prog=python3_path
+endif
+
 call plug#begin('~/.vim/bundle')
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'scrooloose/nerdcommenter'
