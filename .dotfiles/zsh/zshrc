@@ -77,9 +77,6 @@ case ${OSTYPE} in
         ;;
 esac
 
-loadsubconf zshrc.private
-loadsubconf zshrc.local
-
 # Common Exporting
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
@@ -90,9 +87,12 @@ export XDG_CONFIG_HOME=$HOME/.config
 
 # load RVM function
 [[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
-
-echo ZSH config $VER was loaded, enjoy it.
+export PATH=$HOME/.rvm/bin:$PATH
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-export PATH=$HOME/.rvm/bin:/usr/local/opt/python/libexec/bin:$PATH
+loadsubconf zshrc.private
+loadsubconf zshrc.local
+
+echo ZSH config $VER was loaded, enjoy it.
+
