@@ -17,7 +17,7 @@ PASS=`security find-generic-password -a ${USER} -s brew_cu -w`
 sudo -S -v <<< $PASS
 
 echo Update Cask
-/usr/local/bin/brew cu -y 2>&1
+/usr/local/bin/brew cu -fay 2>&1
 echo %
 
 echo Clean up
