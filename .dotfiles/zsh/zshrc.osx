@@ -22,8 +22,9 @@ alias pipupgrade="pip freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs pi
 
 zstyle ':completion:*' list-colors $LSCOLORS
 
-## Load Autojump
-[[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
+## Load z
+[[ -s `brew --prefix`/etc/profile.d/z.sh ]] && . `brew --prefix`/etc/profile.d/z.sh
+alias j=z
 
 ## Load Autoenv
 [[ -s /usr/local/opt/autoenv/activate.sh ]] && . /usr/local/opt/autoenv/activate.sh
