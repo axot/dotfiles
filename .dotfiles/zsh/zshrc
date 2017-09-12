@@ -91,8 +91,8 @@ export PATH=$HOME/.rvm/bin:$PATH
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+loadsubconf zshrc.plugin
 loadsubconf zshrc.private
 loadsubconf zshrc.local
 
 echo ZSH config $VER was loaded, enjoy it.
-
