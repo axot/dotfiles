@@ -25,6 +25,7 @@ Plug 'moll/vim-bbye'
 Plug 'honza/vim-snippets'"
 Plug 'ervandew/supertab'
 Plug 'vim-scripts/bats.vim'
+Plug 'chazy/cscope_maps'
 
 if has('nvim')
   Plug 'Valloric/YouCompleteMe', { 'dir': '~/.vim/bundle/YouCompleteMe', 'do': './install.py --clang-completer --omnisharp-completer --tern-completer' }
@@ -161,3 +162,4 @@ endif
 " vim tags
 let g:vim_tags_directories = ["."]
 let g:vim_tags_ignore_files = []
+
