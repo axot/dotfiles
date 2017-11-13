@@ -186,3 +186,14 @@ endif
 let g:vim_tags_directories = ["."]
 let g:vim_tags_ignore_files = []
 
+" Gtags
+let g:Gtags_Auto_Update = 1
+nmap <F2> :copen<CR>
+nmap <F4> :cclose<CR>
+nmap <F5> :Gtags<SPACE>
+nmap <F6> :Gtags -f %<CR>
+nmap <F7> :GtagsCursor<CR>
+nmap <F8> :Gozilla<CR>
+nmap <C-j> :cn<CR>
+nmap <C-k> :cp<CR>
+nmap <C-\><C-]> :GtagsCursor<CR>
