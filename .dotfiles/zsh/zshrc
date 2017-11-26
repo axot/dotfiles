@@ -13,6 +13,7 @@ bindkey '^K' kill-line
 bindkey '^P' up-history
 bindkey '^N' down-history
 bindkey '^D' delete-char-or-list
+bindkey '^W' backward-kill-word
 
 VER="20170402"
 DOTZSHDIR="$HOME/.dotfiles/zsh"
