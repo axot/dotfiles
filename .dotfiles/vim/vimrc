@@ -27,6 +27,7 @@ Plug 'ervandew/supertab'
 Plug 'vim-scripts/bats.vim'
 Plug 'chazy/cscope_maps'
 Plug 'ronakg/quickr-preview.vim'
+Plug 'zebult/auto-gtags.vim'
 
 if has('nvim')
   Plug 'Valloric/YouCompleteMe', { 'dir': '~/.vim/bundle/YouCompleteMe', 'do': './install.py --clang-completer --omnisharp-completer --tern-completer' }
