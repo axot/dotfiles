@@ -111,6 +111,15 @@ command! -bang -nargs=* Rg
 command! -bang -nargs=? -complete=dir Files
   \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
+" python
+" pip3 install --user --upgrade neovim
+" pip install --user --upgrade neovim
+let g:loaded_python_provider = 1
+let g:python_host_skip_check=1
+let g:python_host_prog = '/usr/local/bin/python'
+let g:python3_host_skip_check=1
+let g:python3_host_prog = '/usr/local/bin/python3'
+
 " airline
 let g:airline_theme='bubblegum'
 let g:airline#extensions#tabline#enabled=1
