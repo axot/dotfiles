@@ -41,7 +41,7 @@ alias -s tgz='tar -zxvf'
 autoload -U compinit
 compinit -u
 
-zstyle ':completion:*:default' menu select true
+#zstyle ':completion:*:default' menu select true
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 
 #autoload -U promptinit
@@ -60,7 +60,7 @@ setopt hist_reduce_blanks hist_ignore_all_dups share_history appendhistory
 setopt correct
 setopt auto_pushd
 setopt list_packed
-setopt complete_in_word auto_list auto_menu menu_complete
+setopt complete_in_word auto_list
 setopt multios
 setopt extended_glob
 setopt always_to_end
