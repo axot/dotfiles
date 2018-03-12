@@ -14,7 +14,7 @@ Plug 'majutsushi/tagbar'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
-Plug 'w0ng/vim-hybrid'
+" Plug 'w0ng/vim-hybrid'
 Plug 'haya14busa/incsearch.vim'
 Plug 'haya14busa/incsearch-fuzzy.vim'
 Plug 'haya14busa/incsearch-easymotion.vim'
@@ -28,6 +28,7 @@ Plug 'vim-scripts/bats.vim'
 Plug 'chazy/cscope_maps'
 Plug 'ronakg/quickr-preview.vim'
 Plug 'zebult/auto-gtags.vim'
+Plug 'altercation/vim-colors-solarized'
 
 if has('nvim')
   Plug 'Valloric/YouCompleteMe', { 'dir': '~/.vim/bundle/YouCompleteMe', 'do': './install.py --clang-completer --tern-completer' }
@@ -37,11 +38,17 @@ endif
 call plug#end()
 
 " Theme
-set background=dark
-let g:hybrid_custom_term_colors=1
-let g:hybrid_reduced_contrast=1
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-colorscheme hybrid
+if has('gui_vimr')
+    set background=light
+else
+    set background=dark
+endif
+"let g:hybrid_custom_term_colors=1
+"let g:hybrid_reduced_contrast=1
+"let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+let g:solarized_termcolors=256
+let g:solarized_termtrans=1
+colorscheme solarized
 
 " Key bindings
 let mapleader=','
