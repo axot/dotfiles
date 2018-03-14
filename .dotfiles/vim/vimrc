@@ -26,7 +26,6 @@ Plug 'honza/vim-snippets'"
 Plug 'ervandew/supertab'
 Plug 'vim-scripts/bats.vim'
 Plug 'chazy/cscope_maps'
-Plug 'ronakg/quickr-preview.vim'
 Plug 'zebult/auto-gtags.vim'
 Plug 'altercation/vim-colors-solarized'
 
