@@ -28,6 +28,7 @@ Plug 'vim-scripts/bats.vim'
 Plug 'chazy/cscope_maps'
 Plug 'zebult/auto-gtags.vim'
 Plug 'altercation/vim-colors-solarized'
+Plug 'google/vim-jsonnet'
 
 if has('nvim')
   Plug 'Valloric/YouCompleteMe', { 'dir': '~/.vim/bundle/YouCompleteMe', 'do': './install.py --clang-completer --tern-completer' }
