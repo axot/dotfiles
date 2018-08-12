@@ -2,19 +2,6 @@
 # User configuration sourced by interactive shells
 #
 
-# VI keymap
-bindkey -v
-bindkey '^R' history-incremental-search-backward
-bindkey '^A' beginning-of-line
-bindkey '^E' end-of-line
-bindkey '^F' forward-char
-bindkey '^B' backward-char
-bindkey '^K' kill-line
-bindkey '^P' up-history
-bindkey '^N' down-history
-bindkey '^D' delete-char-or-list
-bindkey '^W' backward-kill-word
-
 VER="20170402"
 DOTZSHDIR="$HOME/.dotfiles/zsh"
 
@@ -24,11 +11,6 @@ function loadsubconf()
 }
 
 echo Loading zsh ...
-
-# Source zim
-if [[ -s ${ZDOTDIR:-${HOME}}/.zim/init.zsh ]]; then
-  source ${ZDOTDIR:-${HOME}}/.zim/init.zsh
-fi
 
 # Alias
 alias reload='source ~/.zshrc'
@@ -91,6 +73,25 @@ export XDG_CONFIG_HOME=$HOME/.config
 export PATH=$HOME/.rvm/bin:$PATH
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Source zim
+if [[ -s ${ZDOTDIR:-${HOME}}/.zim/init.zsh ]]; then
+  source ${ZDOTDIR:-${HOME}}/.zim/init.zsh
+fi
+
+# VI keymap
+bindkey -v
+bindkey '^R' history-incremental-search-backward
+bindkey '^A' beginning-of-line
+bindkey '^E' end-of-line
+bindkey '^F' forward-char
+bindkey '^B' backward-char
+bindkey '^K' kill-line
+bindkey '^P' up-history
+bindkey '^N' down-history
+bindkey '^D' delete-char-or-list
+bindkey '^W' backward-kill-word
+bindkey '^U' vi-kill-line
 
 loadsubconf zshrc.plugin
 loadsubconf zshrc.private
