@@ -72,8 +72,6 @@ export XDG_CONFIG_HOME=$HOME/.config
 [[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
 export PATH=$HOME/.rvm/bin:$PATH
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 # Source zim
 if [[ -s ${ZDOTDIR:-${HOME}}/.zim/init.zsh ]]; then
   source ${ZDOTDIR:-${HOME}}/.zim/init.zsh
@@ -92,6 +90,8 @@ bindkey '^N' down-history
 bindkey '^D' delete-char-or-list
 bindkey '^W' backward-kill-word
 bindkey '^U' vi-kill-line
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 loadsubconf zshrc.plugin
 loadsubconf zshrc.private
