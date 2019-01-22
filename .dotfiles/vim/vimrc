@@ -55,8 +55,8 @@ let mapleader=','
 inoremap jj <Esc>
 inoremap <C-e> <Esc>A
 inoremap <C-a> <Esc>I
-nnoremap <C-n> :bnext<CR>
-nnoremap <C-p> :bprevious<CR>
+nnoremap <C-S-n> :bnext<CR>
+nnoremap <C-S-p> :bprevious<CR>
 nnoremap <C-]> g<C-]>
 vmap <C-c> :w !pbcopy<CR><CR>
 nnoremap ZQ :qa!<CR>
