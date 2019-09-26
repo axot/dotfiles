@@ -14,10 +14,34 @@ echo Loading zsh ...
 
 # Alias
 alias reload='source ~/.zshrc'
-alias ipython='ipython --pylab'
 
-# Extension Alias
-alias -s tgz='tar -zxvf'
+alias ns=kubens
+alias c=kubectx
+alias k=kubectl
+
+alias kd='kubectl describe'
+alias kg='kubectl get'
+alias kgp='kubectl get pod -owide'
+alias ke='kubectl edit'
+alias keti='kubectl exec -ti'
+
+alias kk='kubectl -n kube-system'
+
+alias kkd='kk describe'
+alias kkg='kk get'
+alias kkgp='kk get pod -owide'
+alias kketi='kk exec -ti'
+
+alias lv='list-servers-gcp.sh -v -f'
+alias 1="awk '{print \$1}'"
+alias 2="awk '{print \$2}'"
+alias 3="awk '{print \$3}'"
+alias 4="awk '{print \$4}'"
+alias 5="awk '{print \$5}'"
+alias 6="awk '{print \$6}'"
+alias 7="awk '{print \$7}'"
+alias 8="awk '{print \$8}'"
+alias 9="awk '{print \$9}'"
 
 # Options
 autoload -U compinit
