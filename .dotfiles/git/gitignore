@@ -2,9 +2,9 @@
 .DS_Store
 ._*
 .*
-!.dotfiles
 */*
 !.dotfiles/*
+!hack/*
 .dotfiles/zsh/zhistory
 .dotfiles/zsh/zshrc.local
 .dotfiles/zsh/zshrc.private
