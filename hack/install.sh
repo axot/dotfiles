@@ -1,7 +1,5 @@
 #!/usr/bin/env zsh
 
-set -ex
-
 echo install zim first
 git clone --recursive https://github.com/zimfw/zimfw.git ${ZDOTDIR:-${HOME}}/.zim
 for template_file in ${ZDOTDIR:-${HOME}}/.zim/templates/*; do
