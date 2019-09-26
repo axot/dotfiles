@@ -17,7 +17,7 @@ echo install zshrc etc
 rsync -av --progress ../ $HOME/ --exclude .git --exclude .gitmodules
 
 echo install vim plugins
-nvim +PlugInstall +qall
+vim +PlugInstall +qall
 
 echo install done
-echo switch to zsh with `chsh -s /path/to/zsh`
+echo switch to zsh with: chsh -s /path/to/zsh
