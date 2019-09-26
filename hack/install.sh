@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 
 set -ex
 
@@ -11,16 +11,15 @@ done
 source ${ZDOTDIR:-${HOME}}/.zlogin
 
 echo install zplug
-mkdir -p /usr/local/opt/zplug
-export ZPLUG_HOME=/usr/local/opt/zplug
+export ZPLUG_HOME=$HOME/zplug
+mkdir -p $ZPLUG_HOME
 git clone https://github.com/zplug/zplug $ZPLUG_HOME
 
 echo install zshrc etc
 cp -r ../* ../.* $HOME/
 
-echo switch to zsh with `chsh -s /path/to/zsh`
-
 echo install vim plugins
 nvim +PlugInstall +qall
 
 echo install done
+echo switch to zsh with `chsh -s /path/to/zsh`
