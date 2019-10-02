@@ -29,3 +29,6 @@ alias j=z
 ## Load Autoenv
 [[ -s /usr/local/opt/autoenv/activate.sh ]] && . /usr/local/opt/autoenv/activate.sh
 
+echo -n "Login to Keychain: ..."
+timeout 30 sh -c "security find-generic-password -a ${USER} -s brew_cu -w > /dev/null"
+echo done

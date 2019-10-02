@@ -121,8 +121,4 @@ loadsubconf zshrc.plugin
 loadsubconf zshrc.private
 loadsubconf zshrc.local
 
-# echo -n "Login to Keychain: ..."
-# security find-generic-password -a ${USER} -s brew_cu -w > /dev/null
-# echo done
-
 echo ZSH config $VER was loaded, enjoy it.
