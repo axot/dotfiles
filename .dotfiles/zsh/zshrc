@@ -43,10 +43,6 @@ alias 7="awk '{print \$7}'"
 alias 8="awk '{print \$8}'"
 alias 9="awk '{print \$9}'"
 
-# Options
-autoload -U compinit
-compinit -u
-
 #zstyle ':completion:*:default' menu select true
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 
