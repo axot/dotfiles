@@ -67,6 +67,7 @@ setopt multios
 setopt extended_glob
 setopt always_to_end
 setopt bash_auto_list
+setopt magicequalsubst
 
 case ${OSTYPE} in
     darwin*)
