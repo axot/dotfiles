@@ -14,7 +14,7 @@ mkdir -p $ZPLUG_HOME
 git clone https://github.com/zplug/zplug $ZPLUG_HOME
 
 echo install zshrc etc
-rsync -av --progress ../ $HOME/ --exclude .git --exclude .gitmodules
+rsync -av --progress ../.* $HOME/ --exclude .git --exclude .gitmodules
 
 echo install vim plugins
 vim +PlugInstall +qall

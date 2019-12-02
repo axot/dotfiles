@@ -3,7 +3,7 @@
 #
 
 VER="20170402"
-DOTZSHDIR="$HOME/.dotfiles/zsh"
+DOTZSHDIR="$HOME/dotfiles/zsh"
 
 function loadsubconf()
 {

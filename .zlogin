@@ -1,1 +1,1 @@
-.dotfiles/zsh/zlogin
+dotfiles/zsh/zlogin

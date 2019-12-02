@@ -1,1 +1,7 @@
-.dotfiles/git/gitignore
+*~
+.DS_Store
+._*
+zsh/zhistory
+zsh/zshrc.local
+zsh/zshrc.private
+vim/bundle/*
