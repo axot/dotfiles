@@ -17,6 +17,7 @@ echo install zshrc etc
 rsync -av --progress ../.* $HOME/ --exclude .git --exclude .gitmodules
 
 echo install vim plugins
+vim +PlugClean +qall
 vim +PlugInstall +qall
 
 echo install done
