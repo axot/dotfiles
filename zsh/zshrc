@@ -17,20 +17,15 @@ alias reload='source ~/.zshrc'
 
 alias ns=kubens
 alias c=kubectx
-alias k=kubectl
+alias k=tubectl
 
-alias kd='kubectl describe'
-alias kg='kubectl get'
-alias kgp='kubectl get pod -owide'
-alias ke='kubectl edit'
-alias keti='kubectl exec -ti'
-
-alias kk='kubectl -n kube-system'
-
-alias kkd='kk describe'
-alias kkg='kk get'
-alias kkgp='kk get pod -owide'
-alias kketi='kk exec -ti'
+alias kd='tubectl describe'
+alias kg='tubectl get'
+alias kgp='tubectl get pod -owide'
+alias ke='tubectl edit'
+alias keti='tubectl exec -ti'
+source <(kubectl completion zsh)
+compdef tubectl=kubectl
 
 alias lv='list-servers-gcp.sh -v -f'
 alias 1="awk '{print \$1}'"
