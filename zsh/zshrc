@@ -24,8 +24,6 @@ alias kg='tubectl get'
 alias kgp='tubectl get pod -owide'
 alias ke='tubectl edit'
 alias keti='tubectl exec -ti'
-source <(kubectl completion zsh)
-compdef tubectl=kubectl
 
 alias lv='list-servers-gcp.sh -v -f'
 alias 1="awk '{print \$1}'"
@@ -108,6 +106,9 @@ bindkey '^W' backward-kill-word
 bindkey '^U' vi-kill-line
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+source <(kubectl completion zsh)
+compdef tubectl=kubectl
 
 loadsubconf zshrc.plugin
 loadsubconf zshrc.private
