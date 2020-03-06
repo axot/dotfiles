@@ -1,7 +1,10 @@
 export ZPLUG_HOME=$HOME/zplug
 source $ZPLUG_HOME/init.zsh
 
-zplug "plugins/kubectl", from:oh-my-zsh
 zplug "superbrothers/zsh-kubectl-prompt"
 
 zplug load
+
+# zsh-kubectl-prompt config
+autoload -U colors; colors
+RPROMPT='%{$fg[blue]%}($ZSH_KUBECTL_PROMPT)%{$reset_color%}'
