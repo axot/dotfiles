@@ -1,7 +1,8 @@
 #!/usr/bin/env zsh
 
 echo install zim first
-curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh
+git clone --recursive https://github.com/zimfw/zimfw.git ${ZDOTDIR:-${HOME}}/.zim
+source ~/.zim/zimfw.zsh install
 
 echo install zplug
 export ZPLUG_HOME=$HOME/zplug
