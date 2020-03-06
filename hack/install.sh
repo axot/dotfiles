@@ -2,12 +2,14 @@
 
 echo install zim first
 curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh
-source ${ZDOTDIR:-${HOME}}/.zlogin
 
 echo install zplug
 export ZPLUG_HOME=$HOME/zplug
 mkdir -p $ZPLUG_HOME
 git clone https://github.com/zplug/zplug $ZPLUG_HOME
+
+source ${ZDOTDIR:-${HOME}}/.zshrc
+zplug install
 
 echo install zshrc etc
 rsync -av --progress ../.* $HOME/ --exclude .git --exclude .gitmodules
