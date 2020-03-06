@@ -107,10 +107,11 @@ bindkey '^U' vi-kill-line
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+loadsubconf zshrc.plugin
+
 source <(kubectl completion zsh)
 compdef tubectl=kubectl
 
-loadsubconf zshrc.plugin
 loadsubconf zshrc.private
 loadsubconf zshrc.local
 
