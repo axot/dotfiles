@@ -17,7 +17,7 @@ alias k=tubectl
 
 alias kd='tubectl describe'
 alias kg='tubectl get'
-alias kgp='tubectl get pod -owide'
+alias kgp='tubectl get pod'
 alias ke='tubectl edit'
 alias keti='tubectl exec -ti'
 
