@@ -1,9 +1,5 @@
 #!/usr/bin/env zsh
 
-echo install zim first
-git clone --recursive https://github.com/zimfw/zimfw.git ${ZDOTDIR:-${HOME}}/.zim
-source ~/.zim/zimfw.zsh install
-
 echo install zplug
 export ZPLUG_HOME=$HOME/zplug
 mkdir -p $ZPLUG_HOME
@@ -14,6 +10,11 @@ zplug install
 
 echo install zshrc etc
 rsync -av --progress ../.* $HOME/ --exclude .git --exclude .gitmodules
+
+# need $HOME/.zimrc
+echo install zim
+git clone --recursive https://github.com/zimfw/zimfw.git ${ZDOTDIR:-${HOME}}/.zim
+source ~/.zim/zimfw.zsh install
 
 echo install vim plugins
 vim +PlugClean +qall
