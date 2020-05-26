@@ -226,6 +226,8 @@ bindkey '^U' vi-kill-line
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+PROMPT=$(echo $PROMPT | sed '2s@^@%{$fg[blue]%}%D{%m/%f}|%T @')
+
 loadsubconf zshrc.plugin
 
 source <(kubectl completion zsh)
