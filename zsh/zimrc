@@ -15,5 +15,4 @@ zmodule git-info
 zmodule utility 
 zmodule input
 zmodule completion
-zmodule ssh
 zmodule steeef
