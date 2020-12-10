@@ -2,6 +2,7 @@
 
 echo install zshrc etc
 rsync -av --progress ../.* $HOME/ --exclude .git --exclude .gitmodules
+ln -sf $(realpath ../zsh/zhistory) $HOME/.zhistory
 
 echo install zplug
 export ZPLUG_HOME=$HOME/zplug
