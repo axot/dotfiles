@@ -2,6 +2,7 @@ export ZPLUG_HOME=$HOME/zplug
 source $ZPLUG_HOME/init.zsh
 
 zplug "superbrothers/zsh-kubectl-prompt"
+zplug "rupa/z", use:"z.sh"
 
 zplug load
 
