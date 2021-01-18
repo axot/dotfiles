@@ -233,6 +233,8 @@ PROMPT=$(echo $PROMPT | sed '2s@^@%{$fg[blue]%}%D{%m/%f}|%T @')
 
 loadsubconf zshrc.plugin
 
+alias j=z
+
 source <(kubectl completion zsh)
 compdef tubectl=kubectl
 
