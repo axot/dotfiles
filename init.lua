@@ -19,8 +19,8 @@ remapKey({'ctrl'}, 'p', keyCode('up'))
 
 -- kana/abc
 local prevKeyCode
--- local eisuu = 0x66
--- local kana = 0x68
+local eisuu = 0x66
+local kana = 0x68
 
 eventtap = hs.eventtap.new({hs.eventtap.event.types.flagsChanged, hs.eventtap.event.types.keyDown}, function (e)
     local keyCode = e:getKeyCode()
@@ -30,11 +30,9 @@ eventtap = hs.eventtap.new({hs.eventtap.event.types.flagsChanged, hs.eventtap.ev
         prevKeyCode = keyCode
         return
     elseif isCmdKeyUp and prevKeyCode == hs.keycodes.map['cmd'] then
-        hs.keycodes.setLayout('ABC')
-        -- hs.eventtap.keyStroke({}, eisuu)
+        hs.eventtap.keyStroke({}, eisuu, 0)
     elseif isCmdKeyUp and prevKeyCode == hs.keycodes.map['rightcmd'] then
-        hs.keycodes.setMethod('Hiragana')
-        -- hs.eventtap.keyStroke({}, kana)
+        hs.eventtap.keyStroke({}, kana, 0)
     end
     prevKeyCode = keyCode
 end)
