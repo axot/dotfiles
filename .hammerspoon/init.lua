@@ -29,11 +29,16 @@ eventtap = hs.eventtap.new({hs.eventtap.event.types.flagsChanged, hs.eventtap.ev
         prevKeyCode = keyCode
         return
     elseif isCmdKeyUp and prevKeyCode == keyMap['cmd'] then
+        hs.alert.closeAll()
+        hs.alert.show('ABC')
         hs.eventtap.keyStroke({}, keyMap['eisu'], 0)
     elseif isCmdKeyUp and prevKeyCode == keyMap['rightcmd'] then
+        hs.alert.closeAll()
+        hs.alert.show('Kana')
         hs.eventtap.keyStroke({}, keyMap['kana'], 0)
     end
     prevKeyCode = keyCode
 end)
 
 eventtap:start()
+
