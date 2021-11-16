@@ -1,44 +1,118 @@
-local function keyCode(key, modifiers)
-   modifiers = modifiers or {}
-   return function()
-      hs.eventtap.event.newKeyEvent(modifiers, string.lower(key), true):post()
-      hs.timer.usleep(1000)
-      hs.eventtap.event.newKeyEvent(modifiers, string.lower(key), false):post()
-   end
+local logger = hs.logger.new("MySpoon", "debug")
+
+function pressFn(mods, key)
+    if key == nil then
+        key = mods
+        mods = {}
+    end
+
+    return function() hs.eventtap.keyStroke(mods, key, 1000) end
 end
 
-local function remapKey(modifiers, key, keyCode)
-   hs.hotkey.bind(modifiers, key, keyCode, nil, keyCode)
+function appRemap(mods, key, remapMods, remapKey)
+    fn = pressFn(remapMods, remapKey)
+    return hs.hotkey.new(mods, key, fn, nil, fn)
+end
+
+-- Translate user input keymap to hs.hotkey functions
+function keymapToHotkeys(keymap)
+    local hotkeys = {}
+
+    for i, item in pairs(keymap) do
+        metaFrom = item[1]
+        keyFrom = item[2]
+        metaTo = item[3]
+        keyTo = item[4]
+
+        table.insert(hotkeys, appRemap(metaFrom, keyFrom, metaTo, keyTo))
+
+        logger.d("Mapping " ..
+            tostring(metaFrom) .. tostring(keyFrom) .. " -> " ..
+            tostring(metaTo) .. tostring(keyTo))
+    end
+
+    return hotkeys
+end
+
+function bind_exclude(appTitle, keymap)
+    logger.d("Found binding for app " .. appTitle)
+    local eventtap = nil
+    local kana_enabled = false
+    local hotkeys = keymapToHotkeys(keymap)
+
+    local function enableKeys()
+        for i, hotkey in pairs(hotkeys) do
+            hotkey:enable()
+        end
+    end
+
+    local function disableKeys()
+        for i, hotkey in pairs(hotkeys) do
+            hotkey:disable()
+        end
+    end
+
+    local function enableKanaAbc()
+        logger.d("enable kana")
+
+        if eventtap == nil then
+            local prevKeyCode
+            local keyMap = hs.keycodes.map
+
+            eventtap = hs.eventtap.new({hs.eventtap.event.types.flagsChanged, hs.eventtap.event.types.keyDown}, function (e)
+                local keyCode = e:getKeyCode()
+                local isCmdKeyUp = not(e:getFlags()['cmd']) and e:getType() == hs.eventtap.event.types.flagsChanged
+
+                if not isCmdKeyUp then
+                    prevKeyCode = keyCode
+                    return
+                elseif isCmdKeyUp and prevKeyCode == keyMap['cmd'] then
+                    hs.alert.closeAll()
+                    hs.alert.show('ABC')
+                    hs.eventtap.keyStroke({}, keyMap['eisu'], 0)
+                elseif isCmdKeyUp and prevKeyCode == keyMap['rightcmd'] then
+                    hs.alert.closeAll()
+                    hs.alert.show('Kana')
+                    hs.eventtap.keyStroke({}, keyMap['kana'], 0)
+                end
+                prevKeyCode = keyCode
+            end)
+        end
+
+        eventtap:start()
+        kana_enabled = true
+    end
+
+    local function disableKanaAbc()
+        logger.d("disable kana")
+        eventtap:stop()
+        kana_enabled = false
+    end
+
+    enableKanaAbc()
+
+    windowtap = hs.application.watcher.new(function (name, type, app)
+        if type == hs.application.watcher.activated and name == appTitle then
+            hs.alert.show(name)
+            if kana_enabled then
+                hs.alert.show("disable kana")
+                disableKanaAbc()
+            end
+        elseif type == hs.application.watcher.activated then
+            if kana_enabled == false then
+                hs.alert.show("enable kana")
+                enableKanaAbc()
+            end
+        end
+    end)
+
+    windowtap:start()
 end
 
 -- カーソル移動
-remapKey({'ctrl'}, 'f', keyCode('right'))
-remapKey({'ctrl'}, 'b', keyCode('left'))
-remapKey({'ctrl'}, 'n', keyCode('down'))
-remapKey({'ctrl'}, 'p', keyCode('up'))
-
--- kana/abc
-local prevKeyCode
-local keyMap = hs.keycodes.map
-
-eventtap = hs.eventtap.new({hs.eventtap.event.types.flagsChanged, hs.eventtap.event.types.keyDown}, function (e)
-    local keyCode = e:getKeyCode()
-    local isCmdKeyUp = not(e:getFlags()['cmd']) and e:getType() == hs.eventtap.event.types.flagsChanged
-
-    if not isCmdKeyUp then
-        prevKeyCode = keyCode
-        return
-    elseif isCmdKeyUp and prevKeyCode == keyMap['cmd'] then
-        hs.alert.closeAll()
-        hs.alert.show('ABC')
-        hs.eventtap.keyStroke({}, keyMap['eisu'], 0)
-    elseif isCmdKeyUp and prevKeyCode == keyMap['rightcmd'] then
-        hs.alert.closeAll()
-        hs.alert.show('Kana')
-        hs.eventtap.keyStroke({}, keyMap['kana'], 0)
-    end
-    prevKeyCode = keyCode
-end)
-
-eventtap:start()
-
+bind_exclude('WorkSpacesClient.macOS', {
+    { {'ctrl'}, 'f', {}, 'right' },
+    { {'ctrl'}, 'b', {}, 'left' },
+    { {'ctrl'}, 'n', {}, 'down' },
+    { {'ctrl'}, 'p', {}, 'up' },
+})
