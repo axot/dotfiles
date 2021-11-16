@@ -93,7 +93,6 @@ function bind_exclude(appTitle, keymap)
 
     windowtap = hs.application.watcher.new(function (name, type, app)
         if type == hs.application.watcher.activated and name == appTitle then
-            hs.alert.show(name)
             if kana_enabled then
                 hs.alert.show("disable kana")
                 disableKanaAbc()
