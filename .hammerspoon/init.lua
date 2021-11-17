@@ -37,7 +37,7 @@ end
 function bind_exclude(appTitle, keymap)
     logger.d("Found binding for app " .. appTitle)
     local eventtap = nil
-    local kana_enabled = false
+    local enabled = false
     local hotkeys = keymapToHotkeys(keymap)
 
     local function enableKeys()
@@ -80,26 +80,31 @@ function bind_exclude(appTitle, keymap)
         end
 
         eventtap:start()
-        kana_enabled = true
+        enabled = true
     end
 
     local function disableKanaAbc()
         logger.d("disable kana")
         eventtap:stop()
-        kana_enabled = false
+        enabled = false
     end
 
+    enableKeys()
     enableKanaAbc()
 
     windowtap = hs.application.watcher.new(function (name, type, app)
         if type == hs.application.watcher.activated and name == appTitle then
-            if kana_enabled then
-                hs.alert.show("disable kana")
+            if enabled then
+                hs.alert.closeAll()
+                hs.alert.show("disable key remap")
+                disableKeys()
                 disableKanaAbc()
             end
         elseif type == hs.application.watcher.activated then
-            if kana_enabled == false then
-                hs.alert.show("enable kana")
+            if enabled == false then
+                hs.alert.closeAll()
+                hs.alert.show("enable key remap")
+                enableKeys()
                 enableKanaAbc()
             end
         end
