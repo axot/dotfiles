@@ -1,5 +1,15 @@
 local logger = hs.logger.new("MySpoon", "debug")
 
+local function has_value (tab, val)
+    for index, value in ipairs(tab) do
+        if value == val then
+            return true
+        end
+    end
+
+    return false
+end
+
 function pressFn(mods, key)
     if key == nil then
         key = mods
@@ -34,8 +44,14 @@ function keymapToHotkeys(keymap)
     return hotkeys
 end
 
-function bind_exclude(appTitle, keymap)
-    logger.d("Found binding for app " .. appTitle)
+function bind_exclude(appTitles, keymap)
+    appTitles_str = ""
+    for k, v in pairs(appTitles) do
+        appTitles_str = appTitles_str .. k .. ", "
+    end
+
+    logger.d("Found binding for app " .. appTitles_str)
+
     local eventtap = nil
     local enabled = false
     local hotkeys = keymapToHotkeys(keymap)
@@ -93,7 +109,7 @@ function bind_exclude(appTitle, keymap)
     enableKanaAbc()
 
     windowtap = hs.application.watcher.new(function (name, type, app)
-        if type == hs.application.watcher.activated and name == appTitle then
+        if type == hs.application.watcher.activated and has_value(appTitles, name) then
             if enabled then
                 hs.alert.closeAll()
                 hs.alert.show("disable key remap")
@@ -114,7 +130,7 @@ function bind_exclude(appTitle, keymap)
 end
 
 -- カーソル移動
-bind_exclude('WorkSpacesClient.macOS', {
+bind_exclude({'WorkSpacesClient.macOS', 'Visual Studio'}, {
     { {'ctrl'}, 'f', {}, 'right' },
     { {'ctrl'}, 'b', {}, 'left' },
     { {'ctrl'}, 'n', {}, 'down' },
