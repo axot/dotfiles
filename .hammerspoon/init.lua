@@ -110,7 +110,13 @@ function bind_exclude(appTitles, keymap)
 
     windowtap = hs.application.watcher.new(function (name, type, app)
         if type == hs.application.watcher.activated and has_value(appTitles, name) then
-            if enabled then
+            items = hs.tabs.tabWindows(app)
+
+            if #(items) > 0 then
+                title = items[1]:title()
+            end
+
+            if enabled and string.find(items[1]:title(), 'DynamoDB') then
                 hs.alert.closeAll()
                 hs.alert.show("disable key remap")
                 disableKeys()
@@ -130,7 +136,7 @@ function bind_exclude(appTitles, keymap)
 end
 
 -- カーソル移動
-bind_exclude({'WorkSpacesClient.macOS', 'Visual Studio'}, {
+bind_exclude({'WorkSpacesClient.macOS', 'Visual Studio', 'Google Chrome'}, {
     { {'ctrl'}, 'f', {}, 'right' },
     { {'ctrl'}, 'b', {}, 'left' },
     { {'ctrl'}, 'n', {}, 'down' },
