@@ -1,4 +1,4 @@
-local logger = hs.logger.new("MySpoon", "debug")
+local logger = hs.logger.new("MySpoon", "info")
 
 local function has_value (tab, val)
     for index, value in ipairs(tab) do
@@ -73,25 +73,45 @@ function bind_exclude(appTitles, keymap)
 
         if eventtap == nil then
             local prevKeyCode
+            local prevFlags
             local keyMap = hs.keycodes.map
 
-            eventtap = hs.eventtap.new({hs.eventtap.event.types.flagsChanged, hs.eventtap.event.types.keyDown}, function (e)
-                local keyCode = e:getKeyCode()
-                local isCmdKeyUp = not(e:getFlags()['cmd']) and e:getType() == hs.eventtap.event.types.flagsChanged
+            local function isCmdKeyUp(e)
+                return not(e:getFlags()['cmd']) and e:getType() == hs.eventtap.event.types.flagsChanged
+            end
 
-                if not isCmdKeyUp then
-                    prevKeyCode = keyCode
-                    return
-                elseif isCmdKeyUp and prevKeyCode == keyMap['cmd'] then
+            local function isCmdKeyAlone(flags)
+                return flags['cmd'] and not flags['shift'] and not flags['alt'] and not flags['ctrl']
+            end
+
+            local function processKeyUp(e)
+                if prevKeyCode == keyMap['cmd'] then
                     hs.alert.closeAll()
                     hs.alert.show('ABC')
                     hs.eventtap.keyStroke({}, keyMap['eisu'], 0)
-                elseif isCmdKeyUp and prevKeyCode == keyMap['rightcmd'] then
+                elseif prevKeyCode == keyMap['rightcmd'] then
                     hs.alert.closeAll()
                     hs.alert.show('Kana')
                     hs.eventtap.keyStroke({}, keyMap['kana'], 0)
                 end
+            end
+
+            eventtap = hs.eventtap.new({hs.eventtap.event.types.flagsChanged, hs.eventtap.event.types.keyDown}, function (e)
+                local keyCode = e:getKeyCode()
+                local flags = e:getFlags()
+
+                if not isCmdKeyUp(e) then
+                    prevKeyCode = keyCode
+                    prevFlags = flags
+                    return
+                end
+
+                if isCmdKeyUp(e) and isCmdKeyAlone(prevFlags) then
+                    processKeyUp(e)
+                end
+
                 prevKeyCode = keyCode
+                prevFlags = flags
             end)
         end
 
@@ -116,7 +136,7 @@ function bind_exclude(appTitles, keymap)
                 title = items[1]:title()
             end
 
-            if enabled and string.find(items[1]:title(), 'DynamoDB') then
+            if enabled and string.find(items[1]:title(), 'DynamoDB共同編集') then
                 hs.alert.closeAll()
                 hs.alert.show("disable key remap")
                 disableKeys()
@@ -142,3 +162,4 @@ bind_exclude({'WorkSpacesClient.macOS', 'Visual Studio', 'Google Chrome'}, {
     { {'ctrl'}, 'n', {}, 'down' },
     { {'ctrl'}, 'p', {}, 'up' },
 })
+
