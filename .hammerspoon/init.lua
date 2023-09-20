@@ -192,7 +192,7 @@ local function initialize()
         }
     )
 
-    initializeMouseEventTap()
+    -- initializeMouseEventTap()
 end
 
 initialize()
