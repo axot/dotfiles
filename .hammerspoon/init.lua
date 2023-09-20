@@ -159,11 +159,13 @@ end
 
 -- Mouse Button Logic
 local function handleSideButtonEvent(e)
-	if e:getButtonState(3) then
+    local btn = e:getProperty(hs.eventtap.event.properties.mouseEventButtonNumber)
+
+	if btn == 3 then
 		hs.eventtap.keyStroke({ "cmd" }, "[")
         hs.alert.show("Goto Previous Page")
 		return true
-	elseif e:getButtonState(4) then
+	elseif btn == 4 then
 		hs.eventtap.keyStroke({ "cmd" }, "]")
         hs.alert.show("Goto Next Page")
 		return true
