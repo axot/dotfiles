@@ -89,25 +89,26 @@ function enableKanaAbc()
             end
         end
 
-        kanaEventTap = hs.eventtap.new({hs.eventtap.event.types.flagsChanged, hs.eventtap.event.types.keyDown}, function (e)
-            local keyCode = e:getKeyCode()
-            local flags = e:getFlags()
+        kanaEventTap = hs.eventtap.new({ hs.eventtap.event.types.flagsChanged, hs.eventtap.event.types.keyDown },
+            function(e)
+                local keyCode = e:getKeyCode()
+                local flags = e:getFlags()
 
-            if not isCmdKeyUp(e) then
+                if not isCmdKeyUp(e) then
+                    prevKeyCode = keyCode
+                    prevFlags = flags
+                    return false
+                end
+
+                if isCmdKeyUp(e) and isCmdKeyAlone(prevFlags) then
+                    processKeyUp(e)
+                end
+
                 prevKeyCode = keyCode
                 prevFlags = flags
-                return false
-            end
 
-            if isCmdKeyUp(e) and isCmdKeyAlone(prevFlags) then
-                processKeyUp(e)
-            end
-
-            prevKeyCode = keyCode
-            prevFlags = flags
-
-            return true
-        end)
+                return true
+            end)
     end
 
     kanaEventTap:start()
@@ -161,17 +162,17 @@ end
 local function handleSideButtonEvent(e)
     local btn = e:getProperty(hs.eventtap.event.properties.mouseEventButtonNumber)
 
-	if btn == 3 then
-		hs.eventtap.keyStroke({ "cmd" }, "[")
+    if btn == 3 then
+        hs.eventtap.keyStroke({ "cmd" }, "[")
         hs.alert.show("Goto Previous Page")
-		return true
-	elseif btn == 4 then
-		hs.eventtap.keyStroke({ "cmd" }, "]")
+        return true
+    elseif btn == 4 then
+        hs.eventtap.keyStroke({ "cmd" }, "]")
         hs.alert.show("Goto Next Page")
-		return true
-	else
-		return false
-	end
+        return true
+    else
+        return false
+    end
 end
 
 local function initializeMouseEventTap()
@@ -182,12 +183,12 @@ end
 -- Initialization Logic
 local function initialize()
     createAppWatcher(
-        {'WorkSpacesClient.macOS', 'Visual Studio', 'Google Chrome'},
+        { 'WorkSpacesClient.macOS', 'Visual Studio', 'Google Chrome' },
         {
-            { {'ctrl'}, 'f', {}, 'right' },
-            { {'ctrl'}, 'b', {}, 'left' },
-            { {'ctrl'}, 'n', {}, 'down' },
-            { {'ctrl'}, 'p', {}, 'up' },
+            { { 'ctrl' }, 'f', {}, 'right' },
+            { { 'ctrl' }, 'b', {}, 'left' },
+            { { 'ctrl' }, 'n', {}, 'down' },
+            { { 'ctrl' }, 'p', {}, 'up' },
         }
     )
 
