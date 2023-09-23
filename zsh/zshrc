@@ -237,7 +237,7 @@ loadsubconf zshrc.plugin
 alias j=z
 alias watch='watch '
 
-source <(kubectl completion zsh)
+source <(/opt/homebrew/bin/kubectl completion zsh)
 compdef tubectl=kubectl
 
 loadsubconf zshrc.private
