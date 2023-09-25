@@ -192,7 +192,17 @@ local function initialize()
         }
     )
 
-    -- initializeMouseEventTap()
+    initializeMouseEventTap()
 end
 
 initialize()
+
+checkTapStatus = hs.timer.new(60, function()  -- checks every 10 seconds
+    if not mouseSideButtonEventTap:isEnabled() then
+        print("Event tap has been disabled.")
+    else
+        print("Event tap has been enabled.")
+    end
+end)
+
+checkTapStatus:start()
