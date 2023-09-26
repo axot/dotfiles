@@ -32,9 +32,6 @@ alias 7="awk '{print \$7}'"
 alias 8="awk '{print \$8}'"
 alias 9="awk '{print \$9}'"
 
-alias cat='bat --style=plain'
-alias diff='diff-so-fancy'
-
 #zstyle ':completion:*:default' menu select true
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 
@@ -83,7 +80,7 @@ export XDG_CONFIG_HOME=$HOME/.config
 
 # load RVM function
 [[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
-export PATH=$HOME/.rvm/bin:$PATH
+export PATH=/opt/homebrew/bin:$HOME/.rvm/bin:$PATH
 
 # Source zim
 # Start configuration added by Zim install {{{
@@ -243,3 +240,4 @@ loadsubconf zshrc.private
 loadsubconf zshrc.local
 
 echo ZSH config $VER was loaded, enjoy it.
+export JAVA_TOOLS_OPTIONS="-Dlog4j2.formatMsgNoLookups=true"

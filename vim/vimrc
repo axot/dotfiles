@@ -32,7 +32,6 @@ Plug 'google/vim-jsonnet'
 Plug 'stephpy/vim-yaml'
 
 if has('nvim')
-  Plug 'Valloric/YouCompleteMe', { 'dir': '~/.vim/bundle/YouCompleteMe', 'do': './install.py --clang-completer --tern-completer' }
   Plug 'SirVer/ultisnips'
 endif
 
