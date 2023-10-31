@@ -8,10 +8,14 @@ function loadsubconf()
 
 echo Loading zsh ...
 
+function ns() {
+  kubectl config set-context --current --namespace=$(kubectl get ns --no-headers -o custom-columns=":metadata.name" | fzf)
+}
+
 # Alias
 alias reload='source ~/.zshrc'
 
-alias ns=kubens
+alias ns=ns
 alias c=kubectx
 alias k=tubectl
 
