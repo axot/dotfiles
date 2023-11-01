@@ -45,6 +45,7 @@ local keyboardHotkeys
 local kanaEventTap
 local kanaHandlingEnabled = false
 local mouseSideButtonEventTap
+local ctrlIsDown = false
 
 local function enableKeys()
     for _, hk in pairs(keyboardHotkeys) do
@@ -89,10 +90,16 @@ function enableKanaAbc()
             end
         end
 
-        kanaEventTap = hs.eventtap.new({ hs.eventtap.event.types.flagsChanged, hs.eventtap.event.types.keyDown },
+        kanaEventTap = hs.eventtap.new({ hs.eventtap.event.types.flagsChanged, hs.eventtap.event.types.keyDown},
             function(e)
                 local keyCode = e:getKeyCode()
                 local flags = e:getFlags()
+
+                if flags['ctrl'] then
+                    ctrlIsDown = true
+                else
+                    ctrlIsDown = false
+                end
 
                 if not isCmdKeyUp(e) then
                     prevKeyCode = keyCode
@@ -162,13 +169,29 @@ end
 local function handleSideButtonEvent(e)
     local btn = e:getProperty(hs.eventtap.event.properties.mouseEventButtonNumber)
 
-    if btn == 3 then
-        hs.eventtap.keyStroke({ "cmd" }, "[")
-        hs.alert.show("Goto Previous Page")
+    if btn == 2 then  -- Middle Mouse Button
+        if ctrlIsDown then
+            hs.spaces.toggleMissionControl()
+            hs.alert.show("Activated Mission Control")
+        end
+        return false
+    elseif btn == 3 then
+        if ctrlIsDown then  -- Ctrl + Mouse Button 3
+            hs.eventtap.keyStroke({"fn", "ctrl"},"left",100)
+            hs.alert.show("Moved Desktop Left")
+        else  -- Mouse Button 3 without Ctrl
+            hs.eventtap.keyStroke({ "cmd" }, "[")
+            hs.alert.show("Goto Previous Page")
+        end
         return true
     elseif btn == 4 then
-        hs.eventtap.keyStroke({ "cmd" }, "]")
-        hs.alert.show("Goto Next Page")
+        if ctrlIsDown then  -- Ctrl + Mouse Button 4
+            hs.eventtap.keyStroke({"fn", "ctrl"},"right",100)
+            hs.alert.show("Moved Desktop Right")
+        else  -- Mouse Button 4 without Ctrl
+            hs.eventtap.keyStroke({ "cmd" }, "]")
+            hs.alert.show("Goto Next Page")
+        end
         return true
     else
         return false
@@ -176,7 +199,7 @@ local function handleSideButtonEvent(e)
 end
 
 local function initializeMouseEventTap()
-    mouseSideButtonEventTap = hs.eventtap.new({ hs.eventtap.event.types.otherMouseDown }, handleSideButtonEvent)
+    mouseSideButtonEventTap = hs.eventtap.new({ hs.eventtap.event.types.otherMouseDown}, handleSideButtonEvent)
     mouseSideButtonEventTap:start()
 end
 
