@@ -229,3 +229,10 @@ checkTapStatus = hs.timer.new(60, function()  -- checks every 10 seconds
 end)
 
 checkTapStatus:start()
+
+local function switchToChineseInput()
+    hs.alert.show("SCIM.ITABC")
+    hs.keycodes.currentSourceID("com.apple.inputmethod.SCIM.ITABC")
+end
+
+hs.hotkey.bind({"ctrl"}, "space", switchToChineseInput)
