@@ -1,4 +1,4 @@
-local logger = hs.logger.new("MySpoon", "info")
+local logger = hs.logger.new("MySpoon", "debug")
 
 -- Helper Functions
 local function has_value(tab, val)
@@ -114,7 +114,7 @@ function enableKanaAbc()
                 prevKeyCode = keyCode
                 prevFlags = flags
 
-                return true
+                return false
             end)
     end
 
